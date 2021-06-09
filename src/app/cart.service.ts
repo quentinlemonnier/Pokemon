@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from './product';
 
 @Injectable({
@@ -11,10 +11,14 @@ export class CartService {
   total: number = 0;
   count: number = 0;
 
-  total$: Subject<number> = new Subject();
-  productsQuantity$: Subject<number> = new Subject();
+  total$: BehaviorSubject<number>;
+  productsQuantity$: BehaviorSubject<number>;
 
-  constructor() { }
+  constructor() {
+    this.getCurrentStats();
+    this.total$ = new BehaviorSubject(this.roundPrice(this.total));
+    this.productsQuantity$ = new BehaviorSubject(this.count);
+   }
 
   findItem(product: Product): Product | undefined {
     return this.products.find((p,i)=>{
@@ -53,12 +57,16 @@ export class CartService {
     return parseFloat(price.toFixed(2));
   }
 
-  update(){
+  getCurrentStats(){
     this.count = this.products.length;
-    this.productsQuantity$.next(this.count);
     this.total = this.products.reduce((a: number, p: Product)=>{
       return a + (p.price * p.quantity);
     }, 0)
+  }
+
+  update(){
+    this.getCurrentStats();
+    this.productsQuantity$.next(this.count);
     this.total$.next(this.roundPrice(this.total));
   }
 
