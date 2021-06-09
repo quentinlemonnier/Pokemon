@@ -5,7 +5,7 @@ const axios = require('axios');
 const app = express();
 
 const env = process.env.NODE_ENV || 'development';
-const pokemontcg = process.env.pokemontcg || '2620f1fa-9161-4163-bb55-56ce0a7edb4e'; // todo: null
+const pokemontcg = process.env.pokemontcg || null; 
 
 /*
  * SSL IN PROD
