@@ -214,7 +214,6 @@ export class PokemonService {
   }
 
   getCardById(id:string){
-    console.log(id);
     return this.http.get(this.API+'/cards/'+id);
   }
 
