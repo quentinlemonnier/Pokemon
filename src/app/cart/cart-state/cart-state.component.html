@@ -1,0 +1,6 @@
+<ng-container *ngIf="quantity > 0">
+    $ {{amount}} <app-pokeball class="ms-2 me-1"></app-pokeball><sup><span class="badge bg-red">{{quantity}}</span></sup>
+</ng-container>
+<ng-container *ngIf="quantity == 0">
+    <span *ngIf="defaultString" class="me-2">Cart</span><app-pokeball class="me-1"></app-pokeball><sup><span class="badge bg-red">0</span></sup>
+</ng-container>

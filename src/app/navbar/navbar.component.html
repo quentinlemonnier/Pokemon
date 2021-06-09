@@ -1,0 +1,15 @@
+<div class="container my-5">
+    <div class="row d-flex align-items-center">
+        <div class="col-3 text-start">
+            LEFT
+        </div>
+        <div class="col-6 text-center">
+            <img src="/assets/International_Pokemon_logo.svg" class="logo" alt="Pokémon logo" [routerLink]="['']">
+        </div>
+        <div class="col-3 text-end">
+            <button class="btn btn-primary btn-lg" [routerLink]="['cart']">
+                <app-cart-state [defaultString]="true"></app-cart-state>
+            </button>
+        </div>
+    </div>
+</div>

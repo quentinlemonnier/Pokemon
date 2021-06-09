@@ -1,0 +1,46 @@
+<ng-template #BUYNOW>
+    <button class="btn btn-primary btn-lg" *ngIf="products.length > 0">BUY NOW</button>
+</ng-template>
+
+<div class="container">
+    <div class="row text-center">
+        <ng-container *ngTemplateOutlet="BUYNOW"></ng-container>
+    </div>
+    <div class="row mt-5 border-0 rounded-3 bg-white p-5">
+        <div class="col-12 col-lg-6">
+            <h1>Details:</h1>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2 class="text-lg-end">{{products.length}} Product(s)</h2>
+        </div>
+    </div>
+    <div class="row border-0 rounded-3 bg-white mt-5 p-5" *ngFor="let product of products;">
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <img [attr.src]="product.image" [attr.alt]="product.name" class="cart-card">
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <div class="row">
+                  <div class="col-12 col-md-3">REF : <strong>#{{product.id}}</strong></div>
+                  <div class="col-12 col-md-3"><h3>{{product.name}}</h3></div>
+                  <div class="col-12 col-md-3"><p class="lead">{{product.quantity}} x $ {{product.price}}</p></div>
+                  <div class="col-12 col-md-3 text-md-end"><p class="lead"><span class="badge bg-red">$ {{totalByItem(product.quantity, product.price)}}</span></p></div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                    <a [routerLink]="['/card',product.id,product.name]" class="btn btn-sm btn-outline-primary me-2 mb-2">View details</a>
+                    <button class="btn btn-outline-danger btn-sm me-2 mb-2" (click)="delete(product)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="row mt-5 mb-5 border-0 rounded-3 bg-white p-5">
+        <p class="lead">VAT: <span class="badge bg-red float-end">{{vat}}</span></p>
+        <p class="display-4">Total: <span class="badge bg-red float-end">{{amount}}</span></p>
+        
+    </div>
+    <div class="row text-center">
+        <ng-container *ngTemplateOutlet="BUYNOW"></ng-container>
+    </div>
+</div>

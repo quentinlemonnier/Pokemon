@@ -1,0 +1,5 @@
+<div class="btn-group btn-lg mb-1 filters" role="group" aria-label="Cards filters">
+    <button type="button" role="button" class="btn btn-primary btn-lg" *ngFor="let filter of filters;" (click)="toggle(filter)">{{filter}}</button>
+    <button type="button" role="button" class="btn btn-primary btn-lg" [routerLink]="['/cart']"><app-cart-state></app-cart-state></button>
+</div>
+<app-filter *ngFor="let filter of filters;" [filter]="filter" [parentForm]="form">{{filter}}</app-filter>

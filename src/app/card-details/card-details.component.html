@@ -1,0 +1,40 @@
+<div class="container card border-0 p-5">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <img [src]="card.images.large" [alt]="card.name" class="card-image">
+        </div> 
+        <div class="col-sm-12 col-md-5 offset-md-1 col-lg-7 offset-lg-1">
+            <h1 class="mt-5">{{card.name}} <span class="badge bg-red float-end">{{price}}</span></h1>
+            <hr>
+            <p>
+                <span class="badge bg-primary me-2 d-inline-block" *ngIf="card.supertype">{{card.supertype}}</span>
+                <span class="badge bg-primary me-2 d-inline-block" *ngIf="card.subtypes">{{card.subtypes}}</span>
+                <span class="badge bg-primary me-2 d-inline-block" *ngIf="card.rarity">{{card.rarity}}</span>
+            </p>
+            <h2>Artist:</h2>
+            <p>{{card.artist}}</p>
+            <h2>Set:</h2>
+            <p><strong>Quantity:</strong> {{card.set.printedTotal}}/{{card.set.total}}</p>
+            <p><strong>Series</strong> {{card.set.series}}</p>
+            <ng-container *ngIf="card.attacks.length > 0">
+            <h2>Attacks:</h2>
+            <p *ngFor="let attack of card.attacks">
+                <strong>{{attack.name}} <span class="badge bg-secondary">{{attack.damage}}</span>: </strong>
+                <span class="text-grey">{{attack.text}}</span>
+                
+            </p>
+            </ng-container>
+            <div class="btn-group" role="group" aria-label="Add to cart">
+                <button #cardQuantityDropdown class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="cardQuantityDropdown" data-bs-toggle="dropdown" aria-expanded="false" (click)="quantityDropdown=!quantityDropdown;">
+                    Quantity: {{quantity}}
+                </button>
+                <ul class="dropdown-menu show" aria-labelledby="cardQuantityDropdown" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" *ngIf="quantityDropdown">
+                    <li *ngFor="let qty of [1,2,3,4,5,6,7,8,9,10];"><button class="dropdown-item" (click)="setQuantity(qty)">{{qty}}</button></li>
+                </ul>
+                <button class="btn btn-lg btn-primary" (click)="addToCart()">Add to cart</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

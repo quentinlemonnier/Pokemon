@@ -1,0 +1,18 @@
+<div *ngIf="open" class="bg-secondary filter">
+  <div class="d-flex align-items-center m-5">
+      <button type="button" aria-label="close" class="close p-0" (click)="hide()">×</button>
+      <div class="text-center vw-100">
+          <h2 class="mb-5"><ng-content></ng-content></h2>
+          <form [formGroup]="parentForm" class="mb-5 row">
+            <div class="col-12 col-md-6 col-lg-4 " *ngFor="let filter of data">
+              <div class="form-check mb-2 text-start">
+                  <input class="form-check-input" type="checkbox" [value]="filter" [id]="'checkbox_'+filter" (change)="onCheckboxChange($event)" [checked]="isChecked(filter)">
+                  <label class="form-check-label" [for]="'checkbox_'+filter">
+                    <strong>{{filter}}</strong>
+                  </label>
+              </div>
+            </div>
+        </form>
+      </div>
+  </div>
+</div>

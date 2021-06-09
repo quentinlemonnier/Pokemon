@@ -6,8 +6,73 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    loader.visible, noscript {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    loader.visible {
+      z-index: 2021;
+    }
+    loader.visible > div, noscript > div {
+      display: inline-block;
+    }
+    
+    @keyframes pokeball {
+      from { transform: translate(0,0) rotate(0deg); }
+      25% { transform: translate(200%,0) rotate(180deg); }
+      50% { transform: translate(0,0) rotate(0deg) }
+      75% { transform: translate(-200%,0) rotate(-180deg); }
+      to { transform: translate(0%,0) rotate(0deg); }
+    }
+
+    loader.visible #loader-pokeball {
+      position: relative;
+      display: inline-block;
+      animation: pokeball 5s ease-in-out infinite normal;
+    }
+
+    .pokeball {
+      display: inline-block;
+      height: 64px;
+      width: 64px
+    }
+
+    noscript {
+      z-index: 2042;
+    }
+  </style>
 </head>
 <body>
+  <loader class="visible">
+    <div>
+      <svg data-name="pokeball" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" id="loader-pokeball" class="pokeball"><title>pokeball</title><path d="M64,0A64,64,0,0,0,0,64H128A64,64,0,0,0,64,0Z" style="fill:#e52421"/><path d="M64,128a64,64,0,0,0,64-64H0A64,64,0,0,0,64,128Z" style="fill:#fff"/><path d="M64,0a64,64,0,1,0,64,64A64,64,0,0,0,64,0Zm0,5a59.07,59.07,0,0,1,58.94,56.5H85.12a21.27,21.27,0,0,0-42.25,0H5.06A59.07,59.07,0,0,1,64,5Zm0,118A59.07,59.07,0,0,1,5.06,66.5H42.88a21.27,21.27,0,0,0,42.25,0h37.81A59.07,59.07,0,0,1,64,123Z"/><circle cx="64" cy="64" r="16.5" style="fill:#fff"/><circle cx="64" cy="64.24" r="8.44"/></svg>
+    </div>
+  </loader>
   <app-root></app-root>
+  <script>
+    document.onreadystatechange = function () {
+      if (document.readyState == "complete") {
+        setTimeout(function(){
+          document.getElementsByTagName('loader')[0].classList.remove('visible');
+          document.getElementsByTagName('loader')[0].style.display = 'none';
+        },0);
+      }
+    }
+  </script>
+  <noscript>
+    <div>
+      <svg data-name="pokeball" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" id="noscript-pokeball" class="pokeball"><title>pokeball</title><path d="M64,0A64,64,0,0,0,0,64H128A64,64,0,0,0,64,0Z" style="fill:#e52421"/><path d="M64,128a64,64,0,0,0,64-64H0A64,64,0,0,0,64,128Z" style="fill:#fff"/><path d="M64,0a64,64,0,1,0,64,64A64,64,0,0,0,64,0Zm0,5a59.07,59.07,0,0,1,58.94,56.5H85.12a21.27,21.27,0,0,0-42.25,0H5.06A59.07,59.07,0,0,1,64,5Zm0,118A59.07,59.07,0,0,1,5.06,66.5H42.88a21.27,21.27,0,0,0,42.25,0h37.81A59.07,59.07,0,0,1,64,123Z"/><circle cx="64" cy="64" r="16.5" style="fill:#fff"/><circle cx="64" cy="64.24" r="8.44"/></svg>
+      <p>Please enable Javascript</p>
+    </div>
+  </noscript>
 </body>
 </html>

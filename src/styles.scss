@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+@import "./assets/scss/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+html, body {
+    font-size: 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100%;
+}
+
+body {
+    background: url(/assets/background.png) no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+}
+
+@media (orientation: landscape) {
+    body { 
+        background-size: 100% auto;
+    }
+}
+
+@media (orientation: portrait) {
+    body {
+        background-size: auto 100%;
+    }
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Pokemon', sans-serif;
+    letter-spacing: .1em;
+}
+
+svg.ico{
+    height: 1em;
+    width: auto;
+    display: inline-block;
+}
