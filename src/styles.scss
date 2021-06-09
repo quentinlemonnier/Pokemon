@@ -11,18 +11,22 @@ html, body {
 body {
     background: url(/assets/background.png) no-repeat;
     background-attachment: fixed;
-    background-size: 100% auto;
+    background-size: auto 100%;
 }
 
 @media (orientation: landscape) {
     body { 
-        background-size: 100% auto;
+        background: url(/assets/background.png) no-repeat;
+        background-attachment: fixed;
+        background-size: 100% auto !important;
     }
 }
 
 @media (orientation: portrait) {
     body {
-        background-size: auto 100%;
+        background: url(/assets/background.png) no-repeat;
+        background-attachment: fixed;
+        background-size: auto 100% !important;
     }
 }
 
