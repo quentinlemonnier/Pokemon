@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 import { Product } from './product';
 
 @Injectable({
@@ -88,6 +88,18 @@ export class PokemonService {
   getSupertypes(opt: any){
     return this.http.get(this.API+'/supertypes')
   }
+
+  getSets(opt: any){
+    return this.http.get(this.API+'/sets?p=250').pipe(
+      map((set:any)=>{
+        let result = set.data.map((s:any)=>{
+          return s.name
+        });
+        set['data'] = result;
+        return set;
+      })
+    )
+  }
   
   getCardPriceNumber(card: any): number{
     let prices: number[] = [0];
@@ -112,6 +124,9 @@ export class PokemonService {
     }, {
       name: 'Sub Types',
       param: 'subtypes'
+    }, {
+      name: 'Sets',
+      param: 'set.name'
     }, {
       name: 'Rarities',
       param: 'rarity'
@@ -214,6 +229,8 @@ export class PokemonService {
         return this.getTypes(opt);
       case 'Sub Types': 
         return this.getSubtypes(opt);
+      case 'Sets': 
+        return this.getSets(opt);
       case 'Rarities': 
         return this.getRarities(opt);
       default: 
