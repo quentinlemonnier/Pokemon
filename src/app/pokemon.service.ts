@@ -171,10 +171,10 @@ export class PokemonService {
       query+='&q=';
     }
    
-    if(opt.search){
+    if(opt.search.length > 2){
       query+='(name:"'+opt.search+'")'
     }
-    if(opt.search && queryLength > 0){
+    if((opt.search.length > 2) && queryLength > 0){
       query+=' AND ';
     }
     keys.forEach((param)=>{
