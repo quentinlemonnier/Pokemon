@@ -3,4 +3,10 @@
     max-height: 128px;
     max-width: 100%;
     cursor: pointer;
+    transition: transform .2s;
+}
+
+.logo:hover, .logo:focus {
+    transform: scale(1.1);
+    outline: none;
 }
