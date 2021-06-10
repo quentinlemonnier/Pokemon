@@ -58,7 +58,9 @@ export class CartService {
   }
 
   getCurrentStats(){
-    this.count = this.products.length;
+    this.count = this.products.reduce((a: number, p: Product)=>{
+      return a + p.quantity;
+    },0);
     this.total = this.products.reduce((a: number, p: Product)=>{
       return a + (p.price * p.quantity);
     }, 0)
