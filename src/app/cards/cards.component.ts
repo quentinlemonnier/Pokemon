@@ -73,7 +73,7 @@ export class CardsComponent implements OnInit, OnDestroy {
 
   scrollHandler(event){
     if( (window.scrollY + this.getPos(this.hostElement.nativeElement).top) >= ( this.hostElement.nativeElement.offsetHeight - this.infiniteScrollOffset )){
-        this.scrollEv.next(this.page);
+      this.scrollEv.next(this.page);
     }
   }
 

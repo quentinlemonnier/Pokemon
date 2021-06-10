@@ -3,7 +3,7 @@
         TEST
     </ng-container>
     <ng-container *ngIf="!card.loading">
-        <img [src]="card.images.small" [alt]="card.name">
+        <img [src]="card.images.small" [alt]="card.name" class="p-card-image">
         <div class="mt-2">
             <p class="lead">{{card.name}} <span class="badge bg-red">{{price}}</span></p>
         </div>

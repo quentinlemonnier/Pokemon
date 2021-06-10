@@ -1,7 +1,7 @@
 <ng-template #filterSearch>
     <input type="text" class="form-control" placeholder="Search" [formControl]="form.get('search')">
 </ng-template>
-<div class="btn-group mb-1 filters d-flex align-items-stretch" role="group" aria-label="Cards filters">
+<div class="btn-group mb-3 filters d-flex align-items-stretch" role="group" aria-label="Cards filters">
     <div class="d-none d-lg-flex align-items-stretch">
         <ng-container *ngTemplateOutlet="filterSearch"></ng-container>
     </div>
