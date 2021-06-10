@@ -8,6 +8,9 @@
               <div class="form-check mb-2 text-start">
                   <input class="form-check-input" type="checkbox" [value]="filter" [id]="'checkbox_'+filter" (change)="onCheckboxChange($event)" [checked]="isChecked(filter)">
                   <label class="form-check-label" [for]="'checkbox_'+filter">
+                    <div class="d-block" *ngIf="filterType == 'Sets'">
+                      <img [src]="getSetImage(filter)" alt="filter" class="set-logo">
+                    </div>
                     <strong>{{filter}}</strong>
                   </label>
               </div>

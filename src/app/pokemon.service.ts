@@ -21,6 +21,7 @@ export class PokemonService {
     page: 1
   };
   pageSize: number = 32;
+  _sets: any[] = [];
 
   constructor( private http: HttpClient ) { 
     this.cards$ = new Observable(this.cardObserver.bind(this));
@@ -92,6 +93,7 @@ export class PokemonService {
   getSets(opt: any){
     return this.http.get(this.API+'/sets?p=250').pipe(
       map((set:any)=>{
+        this._sets = set.data;
         let result = set.data.map((s:any)=>{
           return s.name
         });
@@ -99,6 +101,12 @@ export class PokemonService {
         return set;
       })
     )
+  }
+
+  getSetData(name: string){
+    return this._sets.find((el:any)=>{
+      return el.name == name
+    })
   }
   
   getCardPriceNumber(card: any): number{

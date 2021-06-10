@@ -1,6 +1,15 @@
-@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 @import "./assets/scss/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: 'Pokemon';
+    src:url('./assets/fonts/pokemon/Pokemon-Normal.ttf.woff') format('woff'),
+        url('./assets/fonts/pokemon/Pokemon-Normal.ttf.svg#Pokemon-Normal') format('svg'),
+        url('./assets/fonts/pokemon/Pokemon-Normal.ttf.eot'),
+        url('./assets/fonts/pokemon/Pokemon-Normal.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
 
 html, body {
     font-size: 1em;

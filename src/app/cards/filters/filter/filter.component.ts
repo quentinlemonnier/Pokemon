@@ -15,6 +15,7 @@ export class FilterComponent implements OnInit {
   values: string[] = [];
   open: boolean = false;
   data: string[];
+  filterType: string;
 
   constructor(
     private pokemon: PokemonService
@@ -26,6 +27,7 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filterType = this.filter;
     this.pokemon.getFilter(this.id, {}).subscribe((d: any)=>{
       this.data = d.data;
       this.value = this.parentForm.get(this.filter) as FormArray;
@@ -68,6 +70,15 @@ export class FilterComponent implements OnInit {
 
   show(){
     this.open = true;
+  }
+
+  getSetImage(setName: string){
+    let set = this.pokemon.getSetData(setName);
+    if(set){
+      return set.images.logo
+    }else{
+      return null;
+    }
   }
 
 }
