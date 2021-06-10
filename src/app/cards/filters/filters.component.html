@@ -5,9 +5,9 @@
     <div class="d-none d-lg-flex align-items-stretch">
         <ng-container *ngTemplateOutlet="filterSearch"></ng-container>
     </div>
-    <button type="button" role="button" class="btn btn-primary btn d-inline-block d-lg-none" (click)="toggleFiltersMobileMenu()"><app-burgermenu class="d-flex align-items-center"></app-burgermenu></button>
-    <button type="button" role="button" class="btn btn-primary btn d-none d-lg-inline-block" *ngFor="let filter of filters;" (click)="toggle(filter)">{{filter}}</button>
-    <button type="button" role="button" class="btn btn-primary btn" [routerLink]="['/cart']"><app-cart-state></app-cart-state></button>
+    <button type="button" role="button" class="btn btn-primary d-inline-block d-lg-none" (click)="toggleFiltersMobileMenu()"><app-burgermenu class="d-flex align-items-center"></app-burgermenu></button>
+    <button type="button" role="button" class="btn btn-primary d-none d-lg-inline-block" *ngFor="let filter of filters;" (click)="toggle(filter)">{{filter}}</button>
+    <button type="button" role="button" class="btn btn-primary" [routerLink]="['/cart']"><app-cart-state></app-cart-state></button>
 </div>
 <div *ngIf="filtersMobileMenu" class="filtersMobileMenu bg-secondary">
     <div class="d-flex align-items-center m-5">
