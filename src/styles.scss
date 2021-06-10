@@ -8,28 +8,6 @@ html, body {
     min-height: 100%;
 }
 
-body {
-    background: url(/assets/background.png) no-repeat;
-    background-attachment: fixed;
-    background-size: auto 100%;
-}
-
-@media (orientation: landscape) {
-    body { 
-        background: url(/assets/background.png) no-repeat;
-        background-attachment: fixed;
-        background-size: 100% auto !important;
-    }
-}
-
-@media (orientation: portrait) {
-    body {
-        background: url(/assets/background.png) no-repeat;
-        background-attachment: fixed;
-        background-size: auto 100% !important;
-    }
-}
-
 h1, h2, h3, h4, h5 {
     font-family: 'Pokemon', sans-serif;
     letter-spacing: .1em;

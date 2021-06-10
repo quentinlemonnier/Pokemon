@@ -200,8 +200,6 @@ export class PokemonService {
       }
     });
 
-    console.log(query,opt);
-
     this._query = query;
     this._queryOpt = opt;
     this.runQuery();
