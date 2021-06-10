@@ -13,19 +13,22 @@
 @keyframes bgBlur {
     from {
         filter: blur(0);
+        transform: translate(-10%,-10%);
     }
     50% {
+        transform: translate(0%,-10%);
         filter: blur(1rem);
     }
     to {
         filter: blur(0);
+        transform: translate(-10%,-10%);
     }
 }
 
 .body-bg > img{
     min-width: 120%;
     min-height: 120%;
-    animation: bgBlur 30s infinite linear reverse;
+    animation: bgBlur 60s infinite linear reverse;
     animation-delay: 2.5s;
     transform: translate(-10%,-10%);
 }
