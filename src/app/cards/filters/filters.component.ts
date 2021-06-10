@@ -2,6 +2,7 @@ import { Component, OnInit, Directive, ViewChildren, ElementRef, QueryList, Inpu
 import { PokemonService } from 'src/app/pokemon.service';
 import { FilterComponent } from './filter/filter.component';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Directive({selector: 'app-filter'})
 export class AppFilter {
@@ -18,6 +19,8 @@ export class FiltersComponent implements OnInit {
   @ViewChildren(FilterComponent) appFilters: QueryList<FilterComponent>;
   filters: string[] = this.pokemon.filters;
   form: FormGroup;
+  filtersMobileMenu: boolean = false;
+  search$: Subject<string>;
 
   constructor(
     private pokemon: PokemonService,
@@ -29,7 +32,10 @@ export class FiltersComponent implements OnInit {
       formObj[filter] = fb.array([]);
     });
 
+    formObj["search"] = fb.control([]);
+
     this.form = fb.group(formObj)
+    this.search$ = new Subject();
 
   }
 
@@ -47,6 +53,10 @@ export class FiltersComponent implements OnInit {
         filter.hide();
       }
     })
+  }
+
+  toggleFiltersMobileMenu(){
+    this.filtersMobileMenu = !this.filtersMobileMenu;
   }
 
 }

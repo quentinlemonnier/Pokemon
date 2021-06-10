@@ -40,3 +40,9 @@ svg.ico{
     width: auto;
     display: inline-block;
 }
+svg.ico.fill-current-color {
+    fill: currentColor;
+}
+svg.ico.stroke-current-color {
+    stroke: currentColor;
+}

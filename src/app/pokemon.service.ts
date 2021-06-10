@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { Product } from './product';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class PokemonService {
   _queryOpt: any = {
     page: 1
   };
-  pageSize: number = 4;
+  pageSize: number = 32;
 
   constructor( private http: HttpClient ) { 
     this.cards$ = new Observable(this.cardObserver.bind(this));
@@ -39,6 +39,7 @@ export class PokemonService {
   cardObserver(observer){
       observer.next(this._cards);
       let _query$ = this.query$.pipe(
+        debounceTime(250),
         distinctUntilChanged()
       ).subscribe((params)=>{
           /*
@@ -156,6 +157,9 @@ export class PokemonService {
     let keys = Object.keys(opt.filters ? opt.filters : {});
     let queryI = 0;
     let queryLength = keys.reduce(( a: number, c: string, i: number) => {
+      if(c == 'search'){
+        return a;
+      }
       if(opt.filters[c].length > 0){
         return a + 1;
       }else{
@@ -174,6 +178,9 @@ export class PokemonService {
       query+=' AND ';
     }
     keys.forEach((param)=>{
+      if(param == 'search'){
+        return;
+      }
       let paramOpt = this.filtersOpt.find((el)=>{
         return el.name == param;
       })
@@ -192,6 +199,9 @@ export class PokemonService {
         queryI++;
       }
     });
+
+    console.log(query,opt);
+
     this._query = query;
     this._queryOpt = opt;
     this.runQuery();

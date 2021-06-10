@@ -82,7 +82,7 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.pokemon.buildQuery({
       reset: true,
       filters: filters,
-      search: this.search
+      search: filters['search']
     })
   }
 

@@ -1,5 +1,28 @@
-<div class="btn-group btn-lg mb-1 filters" role="group" aria-label="Cards filters">
-    <button type="button" role="button" class="btn btn-primary btn-sm" *ngFor="let filter of filters;" (click)="toggle(filter)">{{filter}}</button>
-    <button type="button" role="button" class="btn btn-primary btn-sm" [routerLink]="['/cart']"><app-cart-state></app-cart-state></button>
+<ng-template #filterSearch>
+    <input type="text" class="form-control" placeholder="Search" [formControl]="form.get('search')">
+</ng-template>
+<div class="btn-group mb-1 filters d-flex align-items-stretch" role="group" aria-label="Cards filters">
+    <div class="d-none d-lg-flex align-items-stretch">
+        <ng-container *ngTemplateOutlet="filterSearch"></ng-container>
+    </div>
+    <button type="button" role="button" class="btn btn-primary btn d-inline-block d-lg-none" (click)="toggleFiltersMobileMenu()"><app-burgermenu class="d-flex align-items-center"></app-burgermenu></button>
+    <button type="button" role="button" class="btn btn-primary btn d-none d-lg-inline-block" *ngFor="let filter of filters;" (click)="toggle(filter)">{{filter}}</button>
+    <button type="button" role="button" class="btn btn-primary btn" [routerLink]="['/cart']"><app-cart-state></app-cart-state></button>
+</div>
+<div *ngIf="filtersMobileMenu" class="filtersMobileMenu bg-secondary">
+    <div class="d-flex align-items-center m-5">
+        <button type="button" aria-label="close" class="close p-0" (click)="toggleFiltersMobileMenu()">×</button>
+        <div class="container">
+            <h2>Filters</h2>
+            <div class="d-grid gap-2">
+                <button type="button" role="button" class="btn btn-primary btn-lg mt-2" *ngFor="let filter of filters;" (click)="toggle(filter);toggleFiltersMobileMenu();">{{filter}}</button>
+            </div>
+            <h2 class="mt-5">Search</h2>
+            <div class="mb-5">
+                <ng-container *ngTemplateOutlet="filterSearch"></ng-container>
+                <button type="button" role="button" class="btn btn-primary btn-lg mt-2" (click)="toggleFiltersMobileMenu()">Search</button>
+            </div>
+        </div>
+    </div>
 </div>
 <app-filter *ngFor="let filter of filters;" [filter]="filter" [parentForm]="form">{{filter}}</app-filter>

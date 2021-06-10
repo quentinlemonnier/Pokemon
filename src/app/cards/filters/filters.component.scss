@@ -5,3 +5,29 @@
     transform: translate(-50%,0);
     z-index: 2000;
 }
+
+.filtersMobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1999;
+    overflow: auto;
+}
+
+.close {
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: .10em solid currentColor;
+    position: fixed;
+    top:1rem;
+    right:1rem;
+    line-height: 1.8rem;
+    vertical-align: middle;
+    overflow: hidden;
+}

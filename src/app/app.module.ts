@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
 import { PokeballComponent } from './ico/pokeball/pokeball.component';
 import { CartStateComponent } from './cart/cart-state/cart-state.component';
+import { BurgermenuComponent } from './ico/burgermenu/burgermenu.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CartStateComponent } from './cart/cart-state/cart-state.component';
     FooterComponent,
     CartComponent,
     PokeballComponent,
-    CartStateComponent
+    CartStateComponent,
+    BurgermenuComponent
   ],
   imports: [
     BrowserModule,
