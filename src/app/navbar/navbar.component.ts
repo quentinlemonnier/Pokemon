@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((val) => {
       if (val instanceof ActivationEnd) {
-        if(val.snapshot.component['name'].toString() == 'CardDetailsComponent'){
+        if(val.snapshot.component['name'].toString() != 'CardsComponent'){
           this.isBackBtn = true;
         }else{
           this.isBackBtn = false;
